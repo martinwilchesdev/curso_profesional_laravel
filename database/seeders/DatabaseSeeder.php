@@ -13,11 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // al ejecutarse el seeder crea un usuario con un email definido por defectdo
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+            'name' => 'Test user',
+            'email' => 'martin@gmail.com']
+        );
+
+        // se crean 19 usuarios adicionales, cada uno con un post asociado
+        User::factory(19)->hasPosts()->create();
     }
 }
