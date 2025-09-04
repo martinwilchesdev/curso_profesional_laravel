@@ -1,15 +1,24 @@
+{{-- los componentes en blade.php se definen mediante la nomenclatura x-<nombre del componente> --}}
+{{-- el codigo definido entre las etiquetas de apetura y cierre del componente, sera recibido por el $slot definido dentro del componente mismo --}}
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
+    <x-container>
+        @foreach ($posts as $post)
+            <div class="flex items-center gap-2 px-2 text-slate-400 text-sm">
+                <svg class="h-4" data-slot="icon" fill="currentColor" viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path
+                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z">
+                    </path>
+                </svg>
+                {{ $post->user->name }}
             </div>
-        </div>
-    </div>
+            <x-card class="mb-4">
+                {{ $post->body }}
+                <div class="text-xs text-slate-400 mt-2">
+                    {{-- diffForHumans() muestra en un formato legible el tiempo desde que se ha creado el registro --}}
+                    {{ $post->created_at->diffForHumans() }}
+                </div>
+            </x-card>
+        @endforeach
+    </x-container>
 </x-app-layout>

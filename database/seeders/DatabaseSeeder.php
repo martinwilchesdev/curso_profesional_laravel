@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
         // al ejecutarse el seeder crea un usuario con un email definido por defectdo
         User::factory()->create([
             'name' => 'Test user',
-            'email' => 'martin@gmail.com']
+            'email' => 'test@email.com']
         );
 
         // se crean 19 usuarios adicionales, cada uno con un post asociado
-        User::factory(19)->hasPosts()->create();
+        User::factory(19)->hasPosts()->create(); // hasPosts() permite acceder a la relacion posts definida en el modelo User
     }
 }
