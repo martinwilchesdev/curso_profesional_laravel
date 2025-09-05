@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-end h-16">
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-nav-link href="/" class="cursor-pointer">
+                <x-nav-link href="/" class="text-slate-100 cursor-pointer">
                     Home
                 </x-nav-link>
                 <!-- Settings Dropdown -->

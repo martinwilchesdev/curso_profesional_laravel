@@ -2,6 +2,15 @@
 {{-- el codigo definido entre las etiquetas de apetura y cierre del componente, sera recibido por el $slot definido dentro del componente mismo --}}
 <x-app-layout>
     <x-container>
+        {{-- formulario para la creacion de posts --}}
+        <form action="" class="px- mb-8">
+            <textarea name="body" rows="10"
+                class="w-full h-20 p-0 bg-transparent text-slate-100 resize-none overflow-hidden border-0 border-b-2 border-slate-400 focus:border-slate-600 focus:ring-0"
+                placeholder="Your comment..."></textarea>
+            <input type="submit" class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold text-sm rounded-sm"
+                value="Submit">
+        </form>
+
         @foreach ($posts as $post)
             <div class="flex items-center gap-2 px-2 text-slate-400 text-sm">
                 <svg class="h-4" data-slot="icon" fill="currentColor" viewBox="0 0 16 16"
