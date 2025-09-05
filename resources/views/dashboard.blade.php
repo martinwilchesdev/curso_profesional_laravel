@@ -3,9 +3,11 @@
 <x-app-layout>
     <x-container>
         {{-- formulario para la creacion de posts --}}
-        <form action="" class="px- mb-8">
+        <form action="{{ route('posts.store') }}" class="px- mb-8" method="POST">
+            {{-- la directiva csrf le indica a la aplicacion que el formulario no es externo --}}
+            @csrf
             <textarea name="body" rows="10"
-                class="w-full h-20 p-0 bg-transparent text-slate-100 resize-none overflow-hidden border-0 border-b-2 border-slate-400 focus:border-slate-600 focus:ring-0"
+                class="w-full h-14 p-0 bg-transparent text-slate-100 resize-none overflow-hidden border-0 border-b-2 border-slate-400 focus:border-slate-600 focus:ring-0"
                 placeholder="Your comment..."></textarea>
             <input type="submit" class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold text-sm rounded-sm"
                 value="Submit">
