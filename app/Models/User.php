@@ -69,4 +69,24 @@ class User extends Authenticatable
     public function posts() {
         return $this->hasMany(Post::class);
     }
+
+    // solicitud de amistad realizada por mi usuario
+    public function from() {
+        return $this->belongsToMany(User::class, 'friends', 'from_id', 'to_id');
+    }
+
+    // solicitud de amistan recibida por mi usuario
+    public function to() {
+        return $this->belongsToMany(User::class, 'friends', 'to_id', 'from_id');
+    }
+
+    // solicitud de amistad realizada por mi usuario y aceptada por el otro usuario
+    public function friendsFrom() {
+        return $this->from()->wherePivot('accepted', true);
+    }
+
+    // solicitu de amistad recibida por mi usuario y aceptada
+    public function friendsTo() {
+        return $this->to()->wherePivot('accepted', true);
+    }
 }

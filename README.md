@@ -15,3 +15,13 @@ php artisan jetstream:install livewire
 ```bash
 php artisan make:model Post -mf
 ```
+
+## Relaciones
+
+```php
+public function friends() {
+    return $this->belongsToMany('friends', 'from_id', 'to_id');
+}
+```
+
+- __friends:__ Tabla intermedia.
