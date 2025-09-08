@@ -85,7 +85,7 @@ class User extends Authenticatable
         return $this->from()->wherePivot('accepted', true);
     }
 
-    // solicitu de amistad recibida por mi usuario y aceptada
+    // solicitud de amistad recibida por mi usuario y aceptada
     public function friendsTo() {
         return $this->to()->wherePivot('accepted', true);
     }

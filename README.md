@@ -24,4 +24,6 @@ public function friends() {
 }
 ```
 
-- __friends:__ Tabla intermedia.
+- __friends:__ Tabla intermedia
+- __from_id:__ pk
+- __to_id:__ fk
