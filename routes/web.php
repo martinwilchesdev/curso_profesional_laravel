@@ -8,4 +8,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/', [PageController::class, 'dashboard'])->name('dashboard');
 
     Route::post('/', [PostController::class, 'store'])->name('posts.store'); // posts.store -> ruta // store -> metodo del controlador
+    Route::get('/friend-profile/{user}', [PageController::class, 'friendProfile'])->name('friendProfile.show');
 });

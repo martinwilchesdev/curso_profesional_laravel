@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -30,5 +31,11 @@ class PageController extends Controller
         }
 
         return view('dashboard', compact('posts'));
+    }
+
+    public function friendProfile(User $user) {
+        $posts = $user->posts()->latest()->get();
+
+        return view('friendProfile', compact('user', 'posts'));
     }
 }
