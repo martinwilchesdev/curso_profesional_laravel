@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-container>
-        {{-- formulario para la creacion de posts --}}
-        <form class="mb-8">
+        {{-- formulario para realizar una solicitud de amistad --}}
+        <form action="{{ route('friends.store', $user) }}" class="mb-8" method="POST">
             @csrf
             <input type="submit" class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold text-sm rounded-sm"
                 value="Add friend">
