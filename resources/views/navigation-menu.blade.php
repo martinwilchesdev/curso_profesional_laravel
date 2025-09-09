@@ -6,6 +6,9 @@
                 <x-nav-link href="/" class="text-slate-100 cursor-pointer">
                     Home
                 </x-nav-link>
+                <x-nav-link href="{{ route('status') }}" class="text-slate-100 cursor-pointer">
+                    Status
+                </x-nav-link>
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
                     <x-dropdown align="right" width="48">

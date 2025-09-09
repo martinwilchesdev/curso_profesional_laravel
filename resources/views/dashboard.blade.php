@@ -9,8 +9,7 @@
             <textarea name="body" rows="10"
                 class="w-full h-14 p-0 bg-transparent text-slate-100 resize-none overflow-hidden border-0 border-b-2 border-slate-400 focus:border-slate-600 focus:ring-0"
                 placeholder="Your comment..."></textarea>
-            <input type="submit" class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold text-sm rounded-sm"
-                value="Submit">
+            <x-submit-button>Submit</x-submit-button>
         </form>
 
         @foreach ($posts as $post)

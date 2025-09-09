@@ -38,4 +38,12 @@ class PageController extends Controller
 
         return view('friendProfile', compact('user', 'posts'));
     }
+
+    public function status(Request $request) {
+        // solicitures de amistad enviadas y recibidas
+        $requests = $request->user()->pendingFrom;
+        $sent = [];
+
+        return view('status', compact('requests', 'sent'));
+    }
 }
