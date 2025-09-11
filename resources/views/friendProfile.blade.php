@@ -1,10 +1,12 @@
 <x-app-layout>
     <x-container>
-        {{-- formulario para realizar una solicitud de amistad --}}
-        <form action="{{ route('friends.store', $user) }}" class="mb-8" method="POST">
-            @csrf
-            <x-submit-button>Add friend</x-submit-button>
-        </form>
+        {{-- se valida a traves del metodo isRelated que el usuario autenticado no haya realizado una solicitud de amistad al usuario visualizado o viceversa --}}
+        @if (!auth()->user()->isRelated($user))
+            <form action="{{ route('friends.store', $user) }}" class="mb-8" method="POST">
+                @csrf
+                <x-submit-button>Add friend</x-submit-button>
+            </form>
+        @endif
 
         @foreach ($posts as $post)
             <x-card class="mb-4">

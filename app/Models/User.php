@@ -70,6 +70,16 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function isRelated(User $user) {
+        if (auth()->user()->id === $user->id) return true; // si el usuario autenticado ingresa a su mismo perfil, no se mostrar el boton de solicitar amistad
+
+        /**
+         * si el usuario autenticado le ha realizado una solicitud de amistad a otro usuario
+         * si otro usuario le ha realizado una solicitud de amistad al usuario autenticado
+        */
+        return $this->from()->where('to_id', $user->id)->exists() || $this->to()->where('from_id', $user->id)->exists();
+    }
+
     // solicitud de amistad realizada por mi usuario
     public function from() {
         return $this->belongsToMany(User::class, 'friends', 'from_id', 'to_id');
