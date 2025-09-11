@@ -40,11 +40,10 @@ class PageController extends Controller
     }
 
     public function status(Request $request) {
-        // solicitudes de amistad recibidas
-        $requests = $request->user()->pendingFrom;
-        // solicitudes de amistad enviadas
-        $sent = $request->user()->pendingTo;
+        $requests   = $request->user()->pendingFrom; // solicitudes de amistad recibidas
+        $sent       = $request->user()->pendingTo; // solicitudes de amistad enviadas
+        $friends    = $request->user()->friends(); // solicitudes de amistad aceptadas // friends() retorna una coleccion ya construida
 
-        return view('status', compact('requests', 'sent'));
+        return view('status', compact('requests', 'sent', 'friends'));
     }
 }

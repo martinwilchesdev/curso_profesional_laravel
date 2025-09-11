@@ -80,6 +80,12 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'friends', 'to_id', 'from_id');
     }
 
+    // relacion entre amigos
+    public function friends() {
+        // se obtiene una coleccion que contenga todos los amigos con los cuales el usuario ha establecido una amistad
+        return $this->friendsFrom->merge($this->friendsTo);
+    }
+
     // solicitud de amistad realizada por mi usuario y aceptada por el otro usuario
     public function friendsFrom() {
         return $this->from()->wherePivot('accepted', true);
