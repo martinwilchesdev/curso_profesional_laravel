@@ -24,4 +24,13 @@ class FriendController extends Controller
 
         return back();
     }
+
+    public function update(Request $request, User $user) {
+        // a traves de la relacion to, actualizar el valor del campo accepted de la solicitud de amistad recibida
+        $request->user()->to()->where('from_id', $user->id)->update([
+            'accepted' => true
+        ]);
+
+        return back();
+    }
 }

@@ -40,9 +40,10 @@ class PageController extends Controller
     }
 
     public function status(Request $request) {
-        // solicitures de amistad enviadas y recibidas
+        // solicitudes de amistad recibidas
         $requests = $request->user()->pendingFrom;
-        $sent = [];
+        // solicitudes de amistad enviadas
+        $sent = $request->user()->pendingTo;
 
         return view('status', compact('requests', 'sent'));
     }

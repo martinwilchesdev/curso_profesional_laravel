@@ -14,6 +14,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/friend-profile/{user}', [PageController::class, 'friendProfile'])->name('friendProfile.show');
     // realizar una solicitud de amistad
     Route::post('/friends/{user}', [FriendController::class, 'store'])->name('friends.store');
+    // aceptar una solicitud de amistad
+    Route::put('/friends/{user}', [FriendController::class, 'update'])->name('friends.update');
     // listar el estado de las solicitudes de amistad realizadas
     Route::get('/status', [PageController::class, 'status'])->name('status');
 });
