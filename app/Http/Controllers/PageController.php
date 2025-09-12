@@ -15,19 +15,14 @@ class PageController extends Controller
         if ($request->get('for-me')) {
             $user = $request->user(); // usuario autenticado en el sistema
 
-            // amigos a los que les he enviado solicitud de amistad y han aceptado
-            $from_ids = $user->friendsFrom()->pluck('users.id');
-            // amigos que le han enviado solcitud de amistad al usuario autenticado y han sido aceptadas
-            $to_ids = $user->friendsTo()->pluck('users.id');
-
-            // combinacion de los ids de los usuarios anteriores
-            $users_ids = $from_ids->merge($to_ids)->push($user->id);
+            // ids de los usuarios asociados como amigos al usuario autenticado y el mismo id del usuario autenticado
+            $users_ids = $user->friends()->pluck('id')->push($user->id);
 
             // se consultan todos los posts que se encuentren asociados a los ids anteriores
-            $posts = Post::whereIn('user_id', $users_ids)->latest()->get();
+            $posts = Post::with('user')->whereIn('user_id', $users_ids)->latest()->get();
         } else {
             // consulta de todos los posts ordenados del mas antiguo al mas reciente
-            $posts = Post::latest()->get();
+            $posts = Post::with('user')->latest()->get();
         }
 
         return view('dashboard', compact('posts'));

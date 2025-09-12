@@ -27,3 +27,9 @@ public function friends() {
 - __friends:__ Tabla intermedia
 - __from_id:__ pk
 - __to_id:__ fk
+
+## Depuracion (barryvdh/laravel-debugbar)
+
+```bash
+composer require barryvdh/laravel-debugbar --dev
+```
